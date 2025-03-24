@@ -11,75 +11,50 @@ $result = $conn->query("SELECT SinhVien.MaSV, SinhVien.HoTen, SinhVien.GioiTinh,
   <meta charset="UTF-8">
   <title>Danh sách sinh viên</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 </head>
-<body class="bg-light">
+<body style="background-color:#f8f9fa; margin:0; font-family:Arial, sans-serif;">
+
   <!-- Navigation Bar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <div class="container">
-      <a class="navbar-brand" href="index.php">Student Portal</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="index.php">Sinh viên</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="hocphan.php">Học phần</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="login.php">Đăng Nhập</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="register.php">Đăng Kí</a>
-          </li>
-        </ul>
-      </div>
+  <nav style="background-color:#007bff; color:#fff; padding:10px 20px; display:flex; justify-content:space-between; align-items:center;">
+    <div>
+      <a href="index.php" style="color:#fff; text-decoration:none; font-size:20px;">Student Portal</a>
     </div>
   </nav>
 
   <!-- Main Content -->
-  <div class="container my-4">
-    <div class="d-flex justify-content-between align-items-center mb-4">
-      <h2 class="text-primary fw-bold">Danh sách sinh viên</h2>
-      <a href="create.php" class="btn btn-primary rounded-pill">Thêm sinh viên</a>
+  <div style="max-width:1200px; margin:20px auto;">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+      <h2 style="color:#007bff; font-weight:bold;">Danh sách sinh viên</h2>
+      <a href="create.php" style="padding:10px 20px; background-color:#007bff; color:#fff; text-decoration:none; border-radius:25px;">Thêm sinh viên</a>
     </div>
-    <div class="row">
+    <div style="display:flex; flex-wrap:wrap;">
       <?php while ($row = $result->fetch_assoc()): ?>
-        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-          <div class="card h-100 shadow-sm">
-            <?php 
+        <div style="width:23%; margin:1%; background-color:#fff; box-shadow:0 2px 5px rgba(0,0,0,0.1); border-radius:5px; overflow:hidden;">
+          <?php 
               $imagePath = "public/images/" . htmlspecialchars($row['Hinh']);
               if (!empty($row['Hinh']) && file_exists($imagePath)) {
                 $imgSrc = $imagePath;
               } else {
                 $imgSrc = "public/images/default.jpg";
               }
-            ?>
-            <img src="<?= $imgSrc ?>" alt="Hình sinh viên" class="card-img-top" style="height:200px; object-fit:cover;">
-            <div class="card-body">
-              <h5 class="card-title"><?= htmlspecialchars($row['HoTen']) ?></h5>
-              <p class="card-text mb-1"><strong>Mã SV:</strong> <?= htmlspecialchars($row['MaSV']) ?></p>
-              <p class="card-text mb-1"><strong>Giới tính:</strong> <?= htmlspecialchars($row['GioiTinh']) ?></p>
-              <p class="card-text mb-1"><strong>Ngày sinh:</strong> <?= htmlspecialchars($row['NgaySinh']) ?></p>
-              <p class="card-text"><strong>Mã Ngành:</strong> <?= htmlspecialchars($row['MaNganh']) ?></p>
-            </div>
-            <div class="card-footer bg-transparent border-top-0">
-              <div class="d-flex justify-content-between">
-                <a href="detail.php?MaSV=<?= urlencode($row['MaSV']) ?>" class="btn btn-success rounded-pill btn-sm">Xem</a>
-                <a href="edit.php?MaSV=<?= urlencode($row['MaSV']) ?>" class="btn btn-warning rounded-pill btn-sm">Sửa</a>
-                <a href="delete.php?MaSV=<?= urlencode($row['MaSV']) ?>" class="btn btn-danger rounded-pill btn-sm" onclick="return confirm('Bạn có chắc muốn xóa?')">Xóa</a>
-              </div>
-            </div>
+          ?>
+          <img src="<?= $imgSrc ?>" alt="Hình sinh viên" style="width:100%; height:200px; object-fit:cover;">
+          <div style="padding:10px;">
+              <h5 style="margin:5px 0; font-size:18px; color:#333;"><?= htmlspecialchars($row['HoTen']) ?></h5>
+              <p style="margin:5px 0; font-size:14px; color:#555;"><strong>Mã SV:</strong> <?= htmlspecialchars($row['MaSV']) ?></p>
+              <p style="margin:5px 0; font-size:14px; color:#555;"><strong>Giới tính:</strong> <?= htmlspecialchars($row['GioiTinh']) ?></p>
+              <p style="margin:5px 0; font-size:14px; color:#555;"><strong>Ngày sinh:</strong> <?= htmlspecialchars($row['NgaySinh']) ?></p>
+              <p style="margin:5px 0; font-size:14px; color:#555;"><strong>Mã Ngành:</strong> <?= htmlspecialchars($row['MaNganh']) ?></p>
+          </div>
+          <div style="padding:10px; display:flex; justify-content:space-between; border-top:1px solid #eee;">
+              <a href="pages/detail.php?MaSV=<?= urlencode($row['MaSV']) ?>" style="text-decoration:none; color:#007bff;">Xem</a>
+              <a href="pages/edit.php?MaSV=<?= urlencode($row['MaSV']) ?>" style="text-decoration:none; color:#fff; background-color:#ffc107; padding:5px 10px; border-radius:25px; font-size:12px;">Sửa</a>
+              <a href="pages/delete.php?MaSV=<?= urlencode($row['MaSV']) ?>" onclick="return confirm('Bạn có chắc muốn xóa?')" style="text-decoration:none; color:#fff; background-color:#dc3545; padding:5px 10px; border-radius:25px; font-size:12px;">Xóa</a>
           </div>
         </div>
       <?php endwhile; ?>
     </div>
   </div>
 
-  <!-- Bootstrap Bundle JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

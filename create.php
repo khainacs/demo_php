@@ -26,81 +26,48 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Add Student</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body class="bg-light">
-  <!-- Navigation Bar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-info">
-    <div class="container">
-      <a class="navbar-brand" href="index.php">Student Portal</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="index.php">Students</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="courses.php">Courses</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="login.php">Login</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="register.php">Register</a>
-          </li>
-        </ul>
+<body style="background-color:#f8f9fa; margin:0; font-family:Arial, sans-serif;">
+  <div style="max-width:600px; margin:50px auto;">
+    <div style="background-color:#fff; border-radius:8px; box-shadow:0 2px 5px rgba(0,0,0,0.1); overflow:hidden;">
+      <div style="background-color:#17a2b8; padding:15px; text-align:center; color:#fff; font-size:20px; font-weight:bold;">
+        Add Student
       </div>
-    </div>
-  </nav>
-
-  <!-- Add Student Form -->
-  <div class="container my-5">
-    <div class="row justify-content-center">
-      <div class="col-md-8 col-lg-6">
-        <div class="card shadow">
-          <div class="card-header bg-info text-white text-center">
+      <div style="padding:20px;">
+        <form method="POST">
+          <div style="margin-bottom:15px;">
+            <label style="display:block; margin-bottom:5px; font-weight:bold;">Student ID:</label>
+            <input type="text" name="studentID" required style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;">
+          </div>
+          <div style="margin-bottom:15px;">
+            <label style="display:block; margin-bottom:5px; font-weight:bold;">Full Name:</label>
+            <input type="text" name="fullName" required style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;">
+          </div>
+          <div style="margin-bottom:15px;">
+            <label style="display:block; margin-bottom:5px; font-weight:bold;">Gender:</label>
+            <select name="gender" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;">
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+          </div>
+          <div style="margin-bottom:15px;">
+            <label style="display:block; margin-bottom:5px; font-weight:bold;">Birth Date:</label>
+            <input type="date" name="birthDate" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;">
+          </div>
+          <div style="margin-bottom:15px;">
+            <label style="display:block; margin-bottom:5px; font-weight:bold;">Image URL:</label>
+            <input type="text" name="imageURL" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;">
+          </div>
+          <div style="margin-bottom:15px;">
+            <label style="display:block; margin-bottom:5px; font-weight:bold;">Department Code:</label>
+            <input type="text" name="departmentCode" style="width:100%; padding:8px; border:1px solid #ccc; border-radius:4px;">
+          </div>
+          <button type="submit" style="width:100%; padding:10px; background-color:#17a2b8; border:none; border-radius:4px; color:#fff; font-size:16px; cursor:pointer;">
             Add Student
-          </div>
-          <div class="card-body">
-            <form method="POST">
-              <div class="mb-3">
-                <label class="form-label">Student ID:</label>
-                <input type="text" name="studentID" class="form-control" required>
-              </div>
-              <div class="mb-3">
-                <label class="form-label">Full Name:</label>
-                <input type="text" name="fullName" class="form-control" required>
-              </div>
-              <div class="mb-3">
-                <label class="form-label">Gender:</label>
-                <select name="gender" class="form-select">
-                  <option value="Male">Male</option>
-                  <option value="Female">Female</option>
-                </select>
-              </div>
-              <div class="mb-3">
-                <label class="form-label">Birth Date:</label>
-                <input type="date" name="birthDate" class="form-control">
-              </div>
-              <div class="mb-3">
-                <label class="form-label">Image URL:</label>
-                <input type="text" name="imageURL" class="form-control">
-              </div>
-              <div class="mb-3">
-                <label class="form-label">Department Code:</label>
-                <input type="text" name="departmentCode" class="form-control">
-              </div>
-              <button type="submit" class="btn btn-info w-100 text-white">Add Student</button>
-            </form>
-          </div>
-        </div>
+          </button>
+        </form>
       </div>
     </div>
   </div>
-
-  <!-- Bootstrap Bundle JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

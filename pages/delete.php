@@ -1,5 +1,5 @@
 <?php
-include 'config.php';
+include '../config.php';
 
 // Xử lý form POST (thực hiện xóa)
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
